@@ -1,0 +1,37 @@
+---
+import { about } from "../data/about";
+---
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">{about.label}</span>
+      <h2 class="section-title">{about.title}</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-pillars">
+        {about.pillars.map((pillar, i) => (
+          <article class={`pillar-card reveal reveal-delay-${i + 1}`}>
+            <div class="pillar-accent"></div>
+            <h3 class="pillar-heading" set:html={pillar.heading} />
+            <div class="pillar-body">
+              {pillar.paragraphs.map((p) => (
+                <p set:html={p} />
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="about-image reveal reveal-delay-3">
+        <div class="image-wrapper">
+          <div class="image-frame">
+            <img src={`${import.meta.env.BASE_URL}${about.image.src}`} alt={about.image.alt} />
+          </div>
+          <div class="image-frame-deco"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
